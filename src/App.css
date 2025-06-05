@@ -25,3 +25,10 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

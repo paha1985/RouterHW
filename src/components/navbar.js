@@ -4,7 +4,7 @@ export const Navbar = () => {
   return (
     <div>
       <ul>
-        <li>
+        <li style={{ marginLeft: "calc((100vw - 1000px)/2)" }}>
           <Link to="/">Главная страница</Link>
         </li>
         <li>
