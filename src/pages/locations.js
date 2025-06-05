@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Locations = () => {
   var locations = require("../data/location.json");
   return (
@@ -5,7 +7,9 @@ export const Locations = () => {
       {locations.map((location) => {
         return (
           <tr>
-            <td key={location.id}>{location.name}</td>
+            <td key={location.id}>
+              <Link to={`/locations/${location.id}`}>{location.name}</Link>
+            </td>
           </tr>
         );
       })}
