@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Input from "../../components/common/Input";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-provider";
 
 export const SigninForm = ({ onSubmit }) => {
@@ -11,7 +11,10 @@ export const SigninForm = ({ onSubmit }) => {
 
   var users = require("../../data/users.json");
   const navigate = useNavigate();
+  const location = useLocation();
   const auth = useAuth();
+
+  const from = location.state?.from || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ export const SigninForm = ({ onSubmit }) => {
       if (user[0].password === password) {
         setPassError("");
         auth.singin(email, () => {
-          navigate("/");
+          navigate(from, { replace: true });
         });
       } else {
         setPassError("Неверный пароль");
