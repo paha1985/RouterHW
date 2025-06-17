@@ -33,11 +33,46 @@ function App() {
               }
             ></Route>
 
-            <Route path="/characters" element={<Characters />}></Route>
-            <Route path="/locations" element={<Locations />}></Route>
-            <Route path="/episodes/:id" element={<Episode />}></Route>
-            <Route path="/characters/:id" element={<Character />}></Route>
-            <Route path="/locations/:id" element={<Location />}></Route>
+            <Route
+              path="/characters"
+              element={
+                <PrivateRoute>
+                  <Characters />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/locations"
+              element={
+                <PrivateRoute>
+                  <Locations />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/episodes/:id"
+              element={
+                <PrivateRoute>
+                  <Episode />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/characters/:id"
+              element={
+                <PrivateRoute>
+                  <Character />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="/locations/:id"
+              element={
+                <PrivateRoute>
+                  <Location />
+                </PrivateRoute>
+              }
+            ></Route>
             <Route path="/login" element={<Signin />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
