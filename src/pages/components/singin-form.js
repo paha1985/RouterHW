@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Input from "../../components/common/Input";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-provider";
 
 export const SigninForm = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
@@ -8,6 +10,8 @@ export const SigninForm = ({ onSubmit }) => {
   const [passError, setPassError] = useState("");
 
   var users = require("../../data/users.json");
+  const navigate = useNavigate();
+  const auth = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +24,9 @@ export const SigninForm = ({ onSubmit }) => {
       setEmailError("");
       if (user[0].password === password) {
         setPassError("");
+        auth.singin(email, () => {
+          navigate("/");
+        });
       } else {
         setPassError("Неверный пароль");
       }

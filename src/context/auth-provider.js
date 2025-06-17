@@ -9,20 +9,20 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const signin = (newUser, callback) => {
+  const singin = (newUser, callback) => {
     setUser(newUser);
     callback();
   };
 
-  const signout = (callback) => {
+  const singout = (callback) => {
     setUser(null);
     callback();
   };
 
   const value = {
     user,
-    signin,
-    signout,
+    singin,
+    singout,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
