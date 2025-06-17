@@ -11,6 +11,7 @@ import {
   Location,
 } from "./pages";
 import { Episode } from "./pages/episode";
+import Signin from "./pages/singin";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/episodes/:id" element={<Episode />}></Route>
           <Route path="/characters/:id" element={<Character />}></Route>
           <Route path="/locations/:id" element={<Location />}></Route>
+          <Route path="/login" element={<Signin />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </div>

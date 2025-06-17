@@ -32,3 +32,141 @@ li a:hover {
   align-items: center;
   height: 100vh;
 }
+
+.authQuest {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.authQuestButton {
+  background: none;
+  border: none;
+  color: #4dabf7;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.input {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #4dabf7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.red {
+  color: red;
+}
+
+.sexLabel {
+  display: flex;
+  margin-bottom: 4px;
+  padding-left: 12px;
+  font-weight: 500;
+}
+
+.genderRadio {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.genderRadioGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.inputError {
+  border: 1px solid red;
+  padding-left: 20px;
+}
+
+input.inputError::placeholder {
+  color: red;
+}
+
+.filled {
+  border: none;
+  padding-left: 15px;
+}
+
+.unstyled {
+  border: none;
+  margin: 0;
+}
+
+.icon {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(134, 142, 150);
+}
+
+.inp {
+  padding-left: 20px;
+}
+
+.size-xs {
+  font-size: 12px;
+  height: 20px;
+}
+
+.size-sm {
+  font-size: 15px;
+  height: 25px;
+}
+
+.size-md {
+  font-size: 18px;
+  height: 30px;
+}
+
+.size-lg {
+  font-size: 21px;
+  height: 35px;
+}
+
+.size-xl {
+  font-size: 24px;
+  height: 40px;
+}
+
+.radius-xs {
+  border-radius: 2px;
+}
+
+.radius-sm {
+  border-radius: 3px;
+}
+
+.radius-md {
+  border-radius: 4px;
+}
+
+.radius-lg {
+  border-radius: 5px;
+}
+
+.radius-xl {
+  border-radius: 6px;
+}
