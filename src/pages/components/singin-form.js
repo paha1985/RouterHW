@@ -3,7 +3,7 @@ import Input from "../../components/common/Input";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-provider";
 
-export const SigninForm = ({ onSubmit }) => {
+export const SinginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
