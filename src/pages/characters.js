@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Characters = () => {
-  var characters = require("../data/characters.json");
+  const [characters, setCharacters] = useState([]);
+  const getCharacters = async () => {
+    const data = await fetch(`https://rickandmortyapi.com/api/character`);
+    return data.json();
+  };
+
+  useEffect(() => {
+    getCharacters().then((data) => setCharacters(data.results));
+  }, []);
+
   return (
     <table>
       {characters.map((character) => {

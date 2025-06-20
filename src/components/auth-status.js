@@ -5,8 +5,6 @@ export function AuthStatus() {
   const auth = useAuth();
   const navigate = useNavigate();
 
-  console.log(auth);
-
   const handleSingout = () => {
     auth.singout(() => {
       navigate("/");

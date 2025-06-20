@@ -13,7 +13,8 @@ import { Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/auth-provider";
 import { PrivateRoute } from "./components/private-route";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import ErrorBoundary from "./error-boundary";
 
 const Episodes = lazy(() =>
   import("./pages/episodes").then((module) => ({
@@ -73,60 +74,61 @@ function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <Navbar />
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-
-            <Route
-              path="/episodes"
-              element={
-                <PrivateRoute>
-                  <Episodes />
-                </PrivateRoute>
-              }
-            ></Route>
-
-            <Route
-              path="/characters"
-              element={
-                <PrivateRoute>
-                  <Characters />
-                </PrivateRoute>
-              }
-            ></Route>
-            <Route
-              path="/locations"
-              element={
-                <PrivateRoute>
-                  <Locations />
-                </PrivateRoute>
-              }
-            ></Route>
-            <Route
-              path="/episodes/:id"
-              element={
-                <PrivateRoute>
-                  <Episode />
-                </PrivateRoute>
-              }
-            ></Route>
-            <Route
-              path="/characters/:id"
-              element={
-                <PrivateRoute>
-                  <Character />
-                </PrivateRoute>
-              }
-            ></Route>
-            <Route
-              path="/locations/:id"
-              element={
-                <PrivateRoute>
-                  <Location />
-                </PrivateRoute>
-              }
-            ></Route>
+            <Route element={<Navbar />}>
+              <Route path="/" element={<Home />}></Route>
+              <Route
+                path="/episodes"
+                element={
+                  <PrivateRoute>
+                    <Episodes />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/characters"
+                element={
+                  <PrivateRoute>
+                    <Characters />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/locations"
+                element={
+                  <PrivateRoute>
+                    <Locations />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/episodes/:id"
+                element={
+                  <PrivateRoute>
+                    <Episode />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/characters/:id"
+                element={
+                  <PrivateRoute>
+                    <Character />
+                  </PrivateRoute>
+                }
+              ></Route>
+              <Route
+                path="/locations/:id"
+                element={
+                  <ErrorBoundary>
+                    <PrivateRoute>
+                      <Location />
+                    </PrivateRoute>
+                  </ErrorBoundary>
+                }
+              ></Route>
+            </Route>
             <Route path="/login" element={<Singin />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>

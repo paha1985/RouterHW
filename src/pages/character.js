@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const Character = () => {
-  var characters = require("../data/characters.json");
   const id = useParams();
   const [character, setCharacter] = useState("");
 
+  const getCharacter = async () => {
+    const data = await fetch(
+      `https://rickandmortyapi.com/api/character/${id.id}`
+    );
+    return data.json();
+  };
+
   useEffect(() => {
-    const character = characters.filter((item) => item.id === Number(id.id));
-    setCharacter(...character);
-  }, [id, characters]);
+    getCharacter().then((d) => {
+      setCharacter(d);
+    });
+  }, [id]);
 
   return (
     <div>

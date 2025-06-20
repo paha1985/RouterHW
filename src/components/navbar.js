@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { AuthStatus } from "./auth-status";
+import { Suspense } from "react";
+import ErrorBoundary from "../error-boundary";
 
 export const Navbar = () => {
   return (
@@ -7,18 +9,24 @@ export const Navbar = () => {
       <AuthStatus />
       <ul>
         <li style={{ marginLeft: "calc((100vw - 1000px)/2)" }}>
-          <Link to="/">Главная страница</Link>
+          <NavLink to="/">Главная страница</NavLink>
         </li>
         <li>
-          <Link to="/characters">Герои</Link>
+          <NavLink to="/characters">Герои</NavLink>
         </li>
         <li>
-          <Link to="/locations">Локации</Link>
+          <NavLink to="/locations">Локации</NavLink>
         </li>
         <li>
-          <Link to="/episodes">Эпизоды</Link>
+          <NavLink to="/episodes">Эпизоды</NavLink>
         </li>
       </ul>
+
+      <ErrorBoundary>
+        <Suspense fallback={<h1>"Загрузка..."</h1>}>
+          <Outlet />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

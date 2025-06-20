@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const Episode = () => {
-  var episodes = require("../data/episode.json");
   const id = useParams();
   const [episode, setEpisode] = useState("");
 
+  const getEpisode = async () => {
+    const data = await fetch(
+      `https://rickandmortyapi.com/api/episode/${id.id}`
+    );
+    return data.json();
+  };
+
   useEffect(() => {
-    const episode = episodes.filter((item) => item.id === Number(id.id));
-    setEpisode(...episode);
-  }, [id, episodes]);
+    getEpisode().then((d) => {
+      setEpisode(d);
+    });
+  }, [id]);
 
   return (
     <div>

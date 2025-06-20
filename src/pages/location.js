@@ -2,15 +2,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export const Location = () => {
-  var locations = require("../data/location.json");
-  console.log(locations);
   const id = useParams();
   const [location, setLocation] = useState("");
 
+  const getLocation = async () => {
+    const data = await fetch(
+      `https://rickandmortyapi.com/api/location/${id.id}`
+    );
+    return data.json();
+  };
+
   useEffect(() => {
-    const location = locations.filter((item) => item.id === Number(id.id));
-    setLocation(...location);
-  }, [id, locations]);
+    getLocation().then((d) => {
+      setLocation(d);
+    });
+  }, [id]);
 
   return (
     <div>

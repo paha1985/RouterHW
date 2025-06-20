@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  margin: 0 auto;
+}
+
+table {
+  margin: 0 auto;
 }
 
 ul {
@@ -27,9 +32,6 @@ li a:hover {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
