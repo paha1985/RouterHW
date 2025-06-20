@@ -1,28 +1,29 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useGetData } from "../hooks/use-get-data";
 
 export const Episodes = () => {
-  const [episodes, setEpisodes] = useState([]);
-  const getEpisodes = async () => {
-    const data = await fetch(`https://rickandmortyapi.com/api/episode`);
-    return data.json();
-  };
-
-  useEffect(() => {
-    getEpisodes().then((data) => setEpisodes(data.results));
-  }, []);
+  const { data, loading } = useGetData(
+    `https://rickandmortyapi.com/api/episode`,
+    null,
+    null
+  );
 
   return (
-    <table>
-      {episodes.map((episode) => {
-        return (
-          <tr>
-            <td key={episode.id}>
-              <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
-            </td>
-          </tr>
-        );
-      })}
-    </table>
+    <>
+      <table>
+        <tbody>
+          {data.map((episode) => {
+            return (
+              <tr key={episode.id}>
+                <td>
+                  <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {loading && <div className="loading">Loading...</div>}
+    </>
   );
 };

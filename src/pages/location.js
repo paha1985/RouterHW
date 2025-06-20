@@ -1,22 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useGetData } from "../hooks/use-get-data";
 
 export const Location = () => {
   const id = useParams();
-  const [location, setLocation] = useState("");
+  // const [location, setLocation] = useState("");
 
-  const getLocation = async () => {
-    const data = await fetch(
-      `https://rickandmortyapi.com/api/location/${id.id}`
-    );
-    return data.json();
-  };
+  // const getLocation = async () => {
+  //   const data = await fetch(
+  //     `https://rickandmortyapi.com/api/location/${id.id}`
+  //   );
+  //   return data.json();
+  // };
 
-  useEffect(() => {
-    getLocation().then((d) => {
-      setLocation(d);
-    });
-  }, [id]);
+  // useEffect(() => {
+  //   getLocation().then((d) => {
+  //     setLocation(d);
+  //   });
+  // }, [id]);
+
+  const { location, loading } = useGetData(
+    `https://rickandmortyapi.com/api/episode`,
+    null,
+    id.id
+  );
 
   return (
     <div>

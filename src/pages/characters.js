@@ -1,28 +1,31 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useGetData } from "../hooks/use-get-data";
 
 export const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-  const getCharacters = async () => {
-    const data = await fetch(`https://rickandmortyapi.com/api/character`);
-    return data.json();
-  };
-
-  useEffect(() => {
-    getCharacters().then((data) => setCharacters(data.results));
-  }, []);
+  const { data, loading } = useGetData(
+    `https://rickandmortyapi.com/api/character`,
+    null,
+    null
+  );
 
   return (
-    <table>
-      {characters.map((character) => {
-        return (
-          <tr>
-            <td key={character.id}>
-              <Link to={`/characters/${character.id}`}>{character.name}</Link>
-            </td>
-          </tr>
-        );
-      })}
-    </table>
+    <>
+      <table>
+        <tbody>
+          {data.map((character) => {
+            return (
+              <tr key={character.id}>
+                <td>
+                  <Link to={`/characters/${character.id}`}>
+                    {character.name}
+                  </Link>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {loading && <div className="loading">Loading...</div>}
+    </>
   );
 };

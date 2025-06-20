@@ -1,50 +1,42 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useGetData } from "../hooks/use-get-data";
 
 export const Character = () => {
   const id = useParams();
-  const [character, setCharacter] = useState("");
 
-  const getCharacter = async () => {
-    const data = await fetch(
-      `https://rickandmortyapi.com/api/character/${id.id}`
-    );
-    return data.json();
-  };
-
-  useEffect(() => {
-    getCharacter().then((d) => {
-      setCharacter(d);
-    });
-  }, [id]);
+  const { data, loading } = useGetData(
+    `https://rickandmortyapi.com/api/character`,
+    null,
+    id.id
+  );
 
   return (
     <div>
-      <img src={character.image} alt="" />
+      <img src={data[0] ? data[0].image : null} alt="" />
       <table>
         <tr>
           <td>Название:</td>
-          <td>{character.name}</td>
+          <td>{data[0] ? data[0].name : ""}</td>
         </tr>
         <tr>
           <td>Статус:</td>
-          <td>{character.status}</td>
+          <td>{data[0] ? data[0].status : ""}</td>
         </tr>
         <tr>
           <td>Вид:</td>
-          <td>{character.species}</td>
+          <td>{data[0] ? data[0].species : ""}</td>
         </tr>
         <tr>
           <td>Тип:</td>
-          <td>{character.type}</td>
+          <td>{data[0] ? data[0].type : ""}</td>
         </tr>
         <tr>
           <td>Пол:</td>
-          <td>{character.gender}</td>
+          <td>{data[0] ? data[0].gender : ""}</td>
         </tr>
         <tr>
           <td>Дата создания:</td>
-          <td>{character.created}</td>
+          <td>{data[0] ? data[0].created : ""}</td>
         </tr>
       </table>
     </div>
