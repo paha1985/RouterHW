@@ -172,3 +172,8 @@ input.inputError::placeholder {
 .radius-xl {
   border-radius: 6px;
 }
+
+.loading {
+  font-size: 24px;
+  color: green;
+}

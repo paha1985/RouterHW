@@ -1,25 +1,41 @@
 import { Link } from "react-router-dom";
 import { useGetData } from "../hooks/use-get-data";
+import { useState } from "react";
+import { useLoadNextPage } from "../hooks/use-load-next-page";
 
 export const Episodes = () => {
-  const { data, loading } = useGetData(
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const { data, loading, hasMore } = useGetData(
     `https://rickandmortyapi.com/api/episode`,
-    null,
+    pageNumber,
     null
   );
+
+  const lastNodeRef = useLoadNextPage(loading, hasMore, setPageNumber);
 
   return (
     <>
       <table>
         <tbody>
-          {data.map((episode) => {
-            return (
-              <tr key={episode.id}>
-                <td>
-                  <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
-                </td>
-              </tr>
-            );
+          {data.map((episode, index) => {
+            if (data.length === index + 1) {
+              return (
+                <tr key={episode.id} ref={lastNodeRef}>
+                  <td>
+                    <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
+                  </td>
+                </tr>
+              );
+            } else {
+              return (
+                <tr key={episode.id}>
+                  <td>
+                    <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
+                  </td>
+                </tr>
+              );
+            }
           })}
         </tbody>
       </table>

@@ -13,11 +13,23 @@ export const useGetData = (url, page, param) => {
   };
 
   useEffect(() => {
-    getData().then((d) => {
-      d.results ? setData(d.results) : setData([d]);
-      setLoading(false);
-    });
+    getData()
+      .then((d) => {
+        if (d.info) {
+          if (d.info.pages >= page) {
+            setData(data.concat(d.results));
+          }
+          setLoading(false);
+          setHasMore(d.info.pages > page);
+        } else {
+          setData([d]);
+        }
+      })
+      .catch((e) => {
+        setHasMore(false);
+        return;
+      });
   }, [url, page, param]);
 
-  return { data, loading };
+  return { data, loading, hasMore };
 };

@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useGetData } from "../hooks/use-get-data";
 
 export const Location = () => {
   const id = useParams();
-  // const [location, setLocation] = useState("");
 
-  // const getLocation = async () => {
-  //   const data = await fetch(
-  //     `https://rickandmortyapi.com/api/location/${id.id}`
-  //   );
-  //   return data.json();
-  // };
-
-  // useEffect(() => {
-  //   getLocation().then((d) => {
-  //     setLocation(d);
-  //   });
-  // }, [id]);
-
-  const { location, loading } = useGetData(
-    `https://rickandmortyapi.com/api/episode`,
+  const { data } = useGetData(
+    `https://rickandmortyapi.com/api/location`,
     null,
     id.id
   );
@@ -28,22 +13,24 @@ export const Location = () => {
   return (
     <div>
       <table>
-        <tr>
-          <td>Название:</td>
-          <td>{location.name}</td>
-        </tr>
-        <tr>
-          <td>Тип:</td>
-          <td>{location.type}</td>
-        </tr>
-        <tr>
-          <td>Измерение:</td>
-          <td>{location.dimension}</td>
-        </tr>
-        <tr>
-          <td>Дата создания:</td>
-          <td>{location.created}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Название:</td>
+            <td>{data[0] ? data[0].name : ""}</td>
+          </tr>
+          <tr>
+            <td>Тип:</td>
+            <td>{data[0] ? data[0].type : ""}</td>
+          </tr>
+          <tr>
+            <td>Измерение:</td>
+            <td>{data[0] ? data[0].dimension : ""}</td>
+          </tr>
+          <tr>
+            <td>Дата создания:</td>
+            <td>{data[0] ? data[0].created : ""}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
