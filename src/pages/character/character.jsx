@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGetData } from "../hooks/use-get-data";
+import { useGetData } from "../../hooks/use-get-data";
 
 export const Character = () => {
   const id = useParams();

@@ -11,61 +11,62 @@ import { Routes, Route } from "react-router-dom";
 // Location,
 // } from "./pages";
 
+// import { Singin } from "./pages/singin";
 import { AuthProvider } from "./context/auth-provider";
 import { PrivateRoute } from "./components/private-route";
 import { lazy, Suspense } from "react";
-import ErrorBoundary from "./error-boundary";
+import ErrorBoundary from "../error-boundary";
 
 const Episodes = lazy(() =>
-  import("./pages/episodes").then((module) => ({
+  import("./pages/episodes/episodes").then((module) => ({
     default: module.Episodes,
   }))
 );
 
 const Characters = lazy(() =>
-  import("./pages/characters").then((module) => ({
+  import("./pages/characters/characters").then((module) => ({
     default: module.Characters,
   }))
 );
 
 const NotFound = lazy(() =>
-  import("./pages/not-found").then((module) => ({
+  import("./pages/not-found/not-found").then((module) => ({
     default: module.NotFound,
   }))
 );
 
 const Locations = lazy(() =>
-  import("./pages/locations").then((module) => ({
+  import("./pages/locations/locations").then((module) => ({
     default: module.Locations,
   }))
 );
 
 const Location = lazy(() =>
-  import("./pages/location").then((module) => ({
+  import("./pages/location/location").then((module) => ({
     default: module.Location,
   }))
 );
 
 const Character = lazy(() =>
-  import("./pages/character").then((module) => ({
+  import("./pages/character/character").then((module) => ({
     default: module.Character,
   }))
 );
 
 const Home = lazy(() =>
-  import("./pages/home").then((module) => ({
+  import("./pages/home/home").then((module) => ({
     default: module.Home,
   }))
 );
 
 const Episode = lazy(() =>
-  import("./pages/episode").then((module) => ({
+  import("./pages/episode/episode").then((module) => ({
     default: module.Episode,
   }))
 );
 
 const Singin = lazy(() =>
-  import("./pages/singin").then((module) => ({
+  import("./pages/singin/singin").then((module) => ({
     default: module.Singin,
   }))
 );

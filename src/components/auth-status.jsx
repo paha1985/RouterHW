@@ -17,7 +17,9 @@ export function AuthStatus() {
   return (
     <p>
       Welcome user {auth.user}
-      <button onClick={handleSingout}>Sign out</button>
+      <button variant="contained" coloe="error" onClick={handleSingout}>
+        Sign out
+      </button>
     </p>
   );
 }

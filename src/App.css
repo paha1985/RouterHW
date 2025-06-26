@@ -49,12 +49,6 @@ li a:hover {
   text-decoration: underline;
 }
 
-.input {
-  display: flex;
-  margin-bottom: 16px;
-  justify-content: center;
-}
-
 .submitButton {
   width: 100%;
   padding: 10px;
@@ -65,10 +59,6 @@ li a:hover {
   cursor: pointer;
   font-size: 16px;
   font-weight: 500;
-}
-
-.red {
-  color: red;
 }
 
 .sexLabel {
@@ -89,12 +79,6 @@ li a:hover {
   justify-content: center;
   align-items: center;
   gap: 16px;
-}
-
-.label {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: 500;
 }
 
 .inputError {
@@ -126,6 +110,27 @@ input.inputError::placeholder {
 
 .inp {
   padding-left: 20px;
+}
+
+.loading {
+  font-size: 24px;
+  color: green;
+}
+
+.input {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.red {
+  color: red;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
 }
 
 .size-xs {
@@ -171,9 +176,4 @@ input.inputError::placeholder {
 
 .radius-xl {
   border-radius: 6px;
-}
-
-.loading {
-  font-size: 24px;
-  color: green;
 }

@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useGetData } from "../hooks/use-get-data";
+import { useGetData } from "../../hooks";
 
-export const Episode = () => {
+export const Location = () => {
   const id = useParams();
 
   const { data } = useGetData(
-    `https://rickandmortyapi.com/api/episode`,
+    `https://rickandmortyapi.com/api/location`,
     null,
     id.id
   );
@@ -20,11 +20,11 @@ export const Episode = () => {
           </tr>
           <tr>
             <td>Тип:</td>
-            <td>{data[0] ? data[0].air_date : ""}</td>
+            <td>{data[0] ? data[0].type : ""}</td>
           </tr>
           <tr>
             <td>Измерение:</td>
-            <td>{data[0] ? data[0].episode : ""}</td>
+            <td>{data[0] ? data[0].dimension : ""}</td>
           </tr>
           <tr>
             <td>Дата создания:</td>

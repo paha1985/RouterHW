@@ -4,4 +4,5 @@ export const Singin = ({ onSubmit }) => {
   return <SinginForm onSubmit={onSubmit} />;
 };
 
+
 export default Singin;

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Input from "../../components/common/Input";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/auth-provider";
+import users from "../../../data/users.json";
+import Input from "../../../components/common/input/input";
+import { useAuth } from "../../../context/auth-provider";
 
 export const SinginForm = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,6 @@ export const SinginForm = ({ onSubmit }) => {
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
 
-  var users = require("../../data/users.json");
   const navigate = useNavigate();
   const location = useLocation();
   const auth = useAuth();
@@ -62,7 +62,12 @@ export const SinginForm = ({ onSubmit }) => {
         variant=""
       />
 
-      <button type="submit" className="submitButton">
+      <button
+        variant="contained"
+        color="success"
+        type="submit"
+        className="submitButton"
+      >
         Войти
       </button>
     </form>

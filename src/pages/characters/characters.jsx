@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { useGetData } from "../hooks/use-get-data";
 import { useState } from "react";
-import { useLoadNextPage } from "../hooks/use-load-next-page";
+import { useGetData, useLoadNextPage } from "../../hooks";
 
-export const Locations = () => {
+export const Characters = () => {
   const [pageNumber, setPageNumber] = useState(1);
-
   const { data, loading, hasMore } = useGetData(
-    `https://rickandmortyapi.com/api/location`,
+    `https://rickandmortyapi.com/api/character`,
     pageNumber,
     null
   );
@@ -18,23 +16,23 @@ export const Locations = () => {
     <>
       <table>
         <tbody>
-          {data.map((location, index) => {
+          {data.map((character, index) => {
             if (data.length === index + 1) {
               return (
-                <tr key={location.id} ref={lastNodeRef}>
+                <tr key={character.id} ref={lastNodeRef}>
                   <td>
-                    <Link to={`/locations/${location.id}`}>
-                      {location.name}
+                    <Link to={`/characters/${character.id}`}>
+                      {character.name}
                     </Link>
                   </td>
                 </tr>
               );
             } else {
               return (
-                <tr key={location.id}>
+                <tr key={character.id}>
                   <td>
-                    <Link to={`/locations/${location.id}`}>
-                      {location.name}
+                    <Link to={`/characters/${character.id}`}>
+                      {character.name}
                     </Link>
                   </td>
                 </tr>

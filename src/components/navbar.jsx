@@ -1,7 +1,7 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { AuthStatus } from "./auth-status";
 import { Suspense } from "react";
-import ErrorBoundary from "../error-boundary";
+import ErrorBoundary from "../../error-boundary";
 
 export const Navbar = () => {
   return (
