@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import users from "../../../data/users.json";
+import { Button } from "@mui/material";
 import Input from "../../../components/common/input/input";
 import { useAuth } from "../../../context/auth-provider";
 
@@ -62,14 +63,14 @@ export const SinginForm = ({ onSubmit }) => {
         variant=""
       />
 
-      <button
+      <Button
         variant="contained"
         color="success"
         type="submit"
         className="submitButton"
       >
         Войти
-      </button>
+      </Button>
     </form>
   );
 };

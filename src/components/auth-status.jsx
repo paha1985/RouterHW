@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-provider";
+import { Button } from "@mui/material";
 
 export function AuthStatus() {
   const auth = useAuth();
@@ -17,9 +18,9 @@ export function AuthStatus() {
   return (
     <p>
       Welcome user {auth.user}
-      <button variant="contained" coloe="error" onClick={handleSingout}>
+      <Button variant="contained" coloe="error" onClick={handleSingout}>
         Sign out
-      </button>
+      </Button>
     </p>
   );
 }
