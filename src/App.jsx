@@ -1,17 +1,6 @@
 import "./App.css";
-import { Navbar } from "./components/navbar";
+import { Navbar } from "./components/navbar/navbar";
 import { Routes, Route } from "react-router-dom";
-// import {
-// Episodes,
-// Home,
-// Locations,
-// NotFound,
-// Characters,
-// Character,
-// Location,
-// } from "./pages";
-
-// import { Singin } from "./pages/singin";
 import { AuthProvider } from "./context/auth-provider";
 import { PrivateRoute } from "./components/private-route";
 import { lazy, Suspense } from "react";
